@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+      <script src="/javascripts/a.js"></script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+
+    <div id="panel">
+    Ilość słówek w bazie: <%= allWords %><br/>
+    </div>
+
+ <form id="wordForm" action="/add" method="post">
+                            <input class="inputStandard" type="text" placeholder="pl" name="wordOne" id="wordOne" required>
+                            <input  class="inputStandard" type="text" placeholder="en" name="wordTwo" id="wordTwo" required>
+                              <input  class="inputStandard" type="text" placeholder="fon" name="wordThree" id="wordThree" required>
+                            <input type="submit" id="addButton" value="Add">
+                        </form>
+
+<table>
+<tr><td>PL</td><td>EN</td><td>FONETIC</td><td></td><td></td></tr>
+
+<% for(let i=0;i<data.length;i++) { %>
+<tr><td>
+<span class="<%= unescape('pl'+data[i].id) %>"><%= unescape(data[i].word_one) %></span>
+<input class="inputEdit" id="<%= unescape('pl'+data[i].id) %>" name="wordOneNew" type="text" value="<%= unescape(data[i].word_one) %>">
+</td>
+<td>
+<span class="<%= unescape('en'+data[i].id) %>"><%= unescape(data[i].word_two) %></span>
+<input class="inputEdit" id="<%= unescape('en'+data[i].id) %>" name="wordTwoNew" type="text" value="<%= unescape(unescape(data[i].word_two)) %>">
+</td>
+<td>
+<span class="<%= unescape('fo'+data[i].id) %>"><%= unescape(data[i].word_three) %></span>
+<input class="inputEdit" id="<%= unescape('fo'+data[i].id) %>" name="wordThreeNew" type="text" value="<%= unescape(data[i].word_three) %>">
+<input type="hidden" id="wordId" name="wordId" value="<%= unescape(data[i].id) %>">
+</td>
+<td><form onsubmit="if(!confirm('Czy na pewno chcesz usunąć rekord <%= data[i].word_one %>?')){return false;}" action="/delete" method="post">
+   <input type="hidden" value="<%= data[i].id %>" name="wordId" id="wordId">
+                            <input type="submit" id="deleteButton" value="X"></form></td>
+                        <td>
+                        
+                    
+                             <input type="checkbox">
+                        
+                        </td>
+                            </tr>
+<% }; %>
+
+</table>
+
+ <div id="paginationBoxDiv">
+<% for(let p=1;p<pages+1;p++) { %>
+ <input id="paginationButton" type="button" onclick="location.href='/page=<%= p %>';" value="<%= p %>" />
+<% } %>
+</div>
+
+<div id="loader"></div>
+
+  </body>
+</html>

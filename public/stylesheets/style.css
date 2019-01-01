@@ -1,0 +1,140 @@
+h1 {
+  font-size: 36px;
+  color: #555555;
+}
+
+#paginationBoxDiv{
+  width:100%;
+  margin:0 auto;
+  text-align:center;
+  background: transparent;
+}
+
+#paginationButton{
+  color:black;
+  align: center;
+  padding: 5px;
+  align-text: center;
+  margin: 5px;
+  width:30px;
+  background: rgb(180, 180, 180, 0.500);
+  border: 1px solid black;
+}
+
+table {
+  width: 100%;
+  padding: 5px;
+  margin: 5px;
+}
+
+td {
+  width: 33%;
+  padding: 10px;
+}
+
+tr {
+  width: 100%;
+}
+
+tr:nth-child(odd) {
+  background-color: rgba(223, 223, 223, 0.500);
+}
+
+tr:nth-child(even) {
+  background-color: rgb(180, 180, 180, 0.500);
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #e2e2e2;
+}
+
+.inputStandard {
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+  border: 1px solid ccc;
+  color: red;
+  font-size: 26px;
+  width: 28%;
+  box-sizing: border-box;
+  height: 40px;
+}
+
+#loader {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+  visibility: hidden;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+  padding: 0px;
+  margin: 0px;
+}
+
+#loadingtext {
+  height: 35px;
+  background: #555555;
+  color: #FFFFFF;
+  position: absolute;
+}
+
+.inputEdit {
+  border: 0px;
+  color: black;
+  font-size: 16px;
+  background: transparent;
+  width: 95%;
+  border-bottom: 1px solid black;
+}
+
+#addButton {
+  width: 10%;
+  box-sizing: border-box;
+  height: 40px;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+#deleteButton {
+  border: 1px solid ccc;
+  color: red;
+  height: 30px;
+  width: 30px;
+}
+
+div {
+  background: gray;
+  padding: 10px;
+  align-text: center;
+  margin: auto;
+  display: block;
+}
+
+#panel {
+  background: rgb(201, 200, 200);
+  padding: 10px;
+  margin: 10px;
+}
+
+#options-div {
+  background: whitesmoke;
+  border-style: solid;
+  border-width: 1px;
+}
+
+footer {
+  font-size: 10px;
+  padding: 10px;
+}

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 h1 {
   font-size: 36px;
   color: #555555;
@@ -5,7 +7,7 @@ h1 {
 
 #paginationBoxDiv{
   width:100%;
-  margin:0 auto;
+  margin:20px 0 0 0;
   text-align:center;
   background: transparent;
 }
@@ -45,8 +47,63 @@ tr:nth-child(even) {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  padding: 50px;
+  font-family: 'Open Sans',sans-serif;
   background-color: #e2e2e2;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  color: #1a1a1a;
+  border-width: 0;
+}
+
+.header {
+  font-family: 'Open Sans',sans-serif;
+  color: #fff;
+  font-size: 14px;
+  background-color: #000;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: #000;
+  box-shadow: 0 -25px 13px 20px #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  padding: 10px 0 10px 10px;
+  line-height: 25px;
+}
+
+.header .logo {
+  font-size: 14px;
+  text-align: left;
+  float: left;
+  height: 100%;
+  height: 100%;
+}
+
+.header .logo img {
+  vertical-align: middle;
+  margin: 0 10px 0 10px;
+  height: 40px;
+  width: 40px;
+}
+
+.header .menu{
+  text-align: right;
+  display: block;
+  padding: 0px;
+  margin: 6px 50px 0 0;
+}
+
+.header .menu a:hover, a:visited, a:link, a:active{
+  color: #fff;
+  text-decoration: none;
+}
+
+.header .menu a:hover{
+  color: #f00;
 }
 
 .inputStandard {
@@ -60,6 +117,20 @@ body {
   width: 28%;
   box-sizing: border-box;
   height: 40px;
+}
+
+.container {
+ /* background-color:rgb(201, 201, 201);  */
+  /* border-width: 0 0 1px 0;
+  border-style: solid; */
+  /* border-color: rgb(201, 201, 201); */
+  /* box-shadow: 0 0 1px 0  #fff; */
+  margin: 100px 40px 20px 40px;
+  padding: 20px 20px 20px 20px;
+}
+
+.container .content {
+  text-align: center;
 }
 
 #loader {
@@ -114,27 +185,8 @@ body {
   width: 30px;
 }
 
-div {
-  background: gray;
-  padding: 10px;
-  align-text: center;
-  margin: auto;
-  display: block;
-}
-
-#panel {
-  background: rgb(201, 200, 200);
-  padding: 10px;
-  margin: 10px;
-}
-
-#options-div {
-  background: whitesmoke;
-  border-style: solid;
-  border-width: 1px;
-}
-
 footer {
+  text-align: center;
   font-size: 10px;
   padding: 10px;
 }

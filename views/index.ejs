@@ -8,18 +8,30 @@
       <script src="/javascripts/a.js"></script>
   </head>
   <body>
-    <h1><%= title %></h1>
-
-    <div id="panel">
-    Ilość słówek w bazie: <%= allWords %><br/>
+  <div class="header">
+    <div class="logo">
+      <img src="images/iconfinder_Accessories-Dictionary-64_55513.png" alt="dict logo">
+      <%= title %>
     </div>
+    <div class="menu">
+      Ilość słówek w bazie: <%= allWords %>
+    </div>
+  </div>
 
+<div class="container">
+<div class="content">
  <form id="wordForm" action="/add" method="post">
                             <input class="inputStandard" type="text" placeholder="pl" name="wordOne" id="wordOne" required>
                             <input  class="inputStandard" type="text" placeholder="en" name="wordTwo" id="wordTwo" required>
                               <input  class="inputStandard" type="text" placeholder="fon" name="wordThree" id="wordThree" required>
                             <input type="submit" id="addButton" value="Add">
                         </form>
+
+<div id="paginationBoxDiv">
+<% for(let p=1;p<pages+1;p++) { %>
+ <input id="paginationButton" type="button" onclick="location.href='/page=<%= p %>';" value="<%= p %>" />
+<% } %>
+</div>
 
 <table>
 <tr><td>PL</td><td>EN</td><td>FONETIC</td><td></td><td></td></tr>
@@ -49,16 +61,16 @@
                         </td>
                             </tr>
 <% }; %>
-
 </table>
 
- <div id="paginationBoxDiv">
-<% for(let p=1;p<pages+1;p++) { %>
- <input id="paginationButton" type="button" onclick="location.href='/page=<%= p %>';" value="<%= p %>" />
-<% } %>
+</div>
 </div>
 
 <div id="loader"></div>
+
+<footer>
+&copy; Krzysztof Bujak
+</footer>
 
   </body>
 </html>

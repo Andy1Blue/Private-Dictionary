@@ -1,5 +1,5 @@
 var express = require('express');
-var db = require('../db');
+var db = require('../lib/db');
 var decode = require('unescape');
 var router = express.Router();
 // var pdfMake = require('pdfmake');

@@ -9,36 +9,36 @@ var dbstatus = false;
 var words = [];
 var contentToPdf;
 
-router.all('/login', (req, res) => {
+router.post('/login', (req, res) => {
   login.init(req, res);
 });
 
 /* GET homepage pagination */
-router.get('/page=:page', function (req, res, next) {
+router.get('/page=:page', function(req, res, next) {
   let pageLimit = 10; // number of records per page
   let offset = 0;
   let allWords;
   let pages;
   let getPage = escape(req.params.page);
 
-  if (isNaN(getPage)) {
+  if(isNaN(getPage)) {
     throw new Error("Nieprawidłowa strona!");
   }
 
-  db.countAllWords(function (err, rows) {
-    if (err) throw new Error("Nie zaleziono strony!");
+  db.countAllWords(function(err, rows) {
+    if(err) throw new Error("Nie zaleziono strony!");
     allWords = rows[0].wordsCount;
     pages = Math.ceil(allWords / pageLimit);
 
-    if (getPage > pages) {
+    if(getPage > pages) {
       res.redirect('/page=1');
     } else {
 
       console.log(allWords + " / " + pageLimit + " / " + pages);
       offset = pageLimit * (getPage - 1);
 
-      db.getAllWordsWithPagination(pageLimit, offset, function (err, results) {
-        if (err) throw new Error("Nie zaleziono strony!");
+      db.getAllWordsWithPagination(pageLimit, offset, function(err, results) {
+        if(err) throw new Error("Nie zaleziono strony!");
         res.render('index', {
           title: 'Private dictionary',
           dbstatus: dbstatus,
@@ -97,10 +97,21 @@ router.get('/page=:page', function (req, res, next) {
   });
 });
 
+/* GET login page */
+router.get('/login', function(req, res, next) {
+  db.countAllWords(function(err, rows) {
+    if(err) throw new Error("Nie zaleziono strony!");
+    res.render('login', {
+      title: 'Private dictionary',
+      allWords: rows[0].wordsCount
+    });
+  });
+});
+
 /* GET homepage */
-router.get('/', function (req, res, next) {
-  db.getAllWords(function (err, results) {
-    if (err) throw new Error("Nie zaleziono strony!");
+router.get('/', function(req, res, next) {
+  db.getAllWords(function(err, results) {
+    if(err) throw new Error("Nie zaleziono strony!");
     res.render('index', {
       title: 'Private dictionary',
       dbstatus: dbstatus,
@@ -110,45 +121,46 @@ router.get('/', function (req, res, next) {
   //contentToPdf = results;
   // console.log(contentToPdf);
   res.redirect('/page=1');
+  // res.redirect('/login');
 });
 
 /* ADD new word */
-router.post('/add', function (req, res, next) {
-  db.addWords(req.body.wordOne.trim(), req.body.wordTwo.trim(), req.body.wordThree.trim(), 'nodejs appliaction', function (err, results) {
-    if (err) throw new Error("Nie zaleziono strony!");
+router.post('/add', function(req, res, next) {
+  db.addWords(req.body.wordOne.trim(), req.body.wordTwo.trim(), req.body.wordThree.trim(), 'nodejs appliaction', function(err, results) {
+    if(err) throw new Error("Nie zaleziono strony!");
     res.redirect('/page=1');
   });
 });
 
 /* DELETE word */
-router.post('/delete', function (req, res, next) {
+router.post('/delete', function(req, res, next) {
   var wordIdFromPost = req.body.wordId;
-  db.deleteWord(wordIdFromPost, function (err, results) {
-    if (err) throw new Error("Nie zaleziono strony!");
+  db.deleteWord(wordIdFromPost, function(err, results) {
+    if(err) throw new Error("Nie zaleziono strony!");
     res.redirect('/page=1');
   });
 });
 
 /* UPDATE word one*/
-router.post('/updateWordOne', function (req, res, next) {
-  db.updateWordOne(req.body.wordId, req.body.wordOneNew.trim(), function (err, results) {
-    if (err) throw new Error("Nie zaleziono strony!");
+router.post('/updateWordOne', function(req, res, next) {
+  db.updateWordOne(req.body.wordId, req.body.wordOneNew.trim(), function(err, results) {
+    if(err) throw new Error("Nie zaleziono strony!");
     res.redirect('/page=1');
   });
 });
 
 /* UPDATE word two*/
-router.post('/updateWordTwo', function (req, res, next) {
-  db.updateWordTwo(req.body.wordId, req.body.wordTwoNew.trim(), function (err, results) {
-    if (err) throw new Error("Nie zaleziono strony!");
+router.post('/updateWordTwo', function(req, res, next) {
+  db.updateWordTwo(req.body.wordId, req.body.wordTwoNew.trim(), function(err, results) {
+    if(err) throw new Error("Nie zaleziono strony!");
     res.redirect('/page=1');
   });
 });
 
 /* UPDATE word three*/
-router.post('/updateWordThree', function (req, res, next) {
-  db.updateWordThree(req.body.wordId, req.body.wordThreeNew.trim(), function (err, results) {
-    if (err) throw new Error("Nie zaleziono strony!");
+router.post('/updateWordThree', function(req, res, next) {
+  db.updateWordThree(req.body.wordId, req.body.wordThreeNew.trim(), function(err, results) {
+    if(err) throw new Error("Nie zaleziono strony!");
     res.redirect('/page=1');
   });
 });

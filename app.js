@@ -8,6 +8,7 @@ const mysql = require('mysql');
 const pdfmake = require('pdfmake');
 const login = require('./lib/api/login');
 const indexRouter = require('./routes/index');
+const workers = require('./lib/workers');
 
 var app = express();
 
@@ -42,5 +43,14 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//Init function
+app.init = () => {
+  //Start the workers
+  workers.init();
+};
+
+//Execute
+app.init();
 
 module.exports = app;

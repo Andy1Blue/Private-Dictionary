@@ -1,12 +1,17 @@
-var express = require('express');
-var db = require('../lib/db');
-var decode = require('unescape');
-var router = express.Router();
+const express = require('express');
+const db = require('../lib/db');
+const decode = require('unescape');
+const router = express.Router();
+const login = require('../lib/api/login');
 // var pdfMake = require('pdfmake');
 
 var dbstatus = false;
 var words = [];
 var contentToPdf;
+
+router.all('/login', (req, res) => {
+  login.init(req, res);
+});
 
 /* GET homepage pagination */
 router.get('/page=:page', function (req, res, next) {

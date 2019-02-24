@@ -1,14 +1,17 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var mysql = require('mysql'); 
-var pdfmake = require('pdfmake');
-
-var indexRouter = require('./routes/index');
+const createError = require('http-errors');
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const mysql = require('mysql');
+const pdfmake = require('pdfmake');
+const login = require('./lib/api/login');
+const indexRouter = require('./routes/index');
 
 var app = express();
+
+app.use(cors());
 
 app.get('/favicon.ico', (req, res) => res.status(204));
 

@@ -12,14 +12,13 @@ const workers = require('./lib/workers');
 
 var app = express();
 
-app.use(cors());
-
 app.get('/favicon.ico', (req, res) => res.status(204));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
